@@ -1,0 +1,14 @@
+body{
+    margin:0;
+    padding:0;  
+}
+header{
+    background-color: rgb(62, 79, 79);
+    padding: 10px;
+    color:aliceblue
+}
+.section{
+    width: 50%;
+    margin-top: 10px;
+    float: left;
+}

@@ -1,8 +1,8 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-function usermanagement(connection, gConfig) {
-    var usermanagement = new Schema({
+function teams(connection, gConfig) {
+    var teams = new Schema({
         createdBy: {
             type: String,
             require : true,
@@ -13,40 +13,28 @@ function usermanagement(connection, gConfig) {
             require : true,
             default: new Date()
         },
-        name: {
+        teamName: {
             type: String,
             require : true,
         },
-        email: {
+        teamSlogan: {
             type: String,
             require : true,
         },
-        password: {
+        teamCityName: {
             type: String,
-            require : true,
-        },
-        mobileNumber: {
-            type: Number,
-            require : true,
-        },
-        userRole: {
-            type: String,
-            require : true,
-        },
-        isActive: {
-            type: Number,
             require : true,
             default: 1
         },
-        isDelete: {
-            type: Number,
+        teamOwnerName: {
+            type: String,
             require : true,
             default: 0
         },
         status: {
             type: String,
             require : true,
-            default: 'Pending'
+            default: 'Active'
         },
         updatedBy: {
             type: String,
@@ -58,18 +46,8 @@ function usermanagement(connection, gConfig) {
             require : true,
             default: new Date()
         },
-        userId: {
-            type: Schema.Types.ObjectId,
-            require : true,
-            ref: 'usermanagement'
-        },
-        subscribedTeamID: {
-            type: Schema.Types.ObjectId,
-            require : true,
-            ref: 'teams'
-        },
     });
-    gConfig.usermanagement = connection.model('usermanagement', usermanagement);
+    gConfig.teams = connection.model('teams', teams);
     return gConfig;
 }
-module.exports = usermanagement;
+module.exports = teams;

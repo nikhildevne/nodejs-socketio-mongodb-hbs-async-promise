@@ -1,8 +1,8 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-function usermanagement(connection, gConfig) {
-    var usermanagement = new Schema({
+function players(connection, gConfig) {
+    var players = new Schema({
         createdBy: {
             type: String,
             require : true,
@@ -13,23 +13,15 @@ function usermanagement(connection, gConfig) {
             require : true,
             default: new Date()
         },
-        name: {
+        playerName: {
             type: String,
             require : true,
         },
-        email: {
-            type: String,
-            require : true,
-        },
-        password: {
-            type: String,
-            require : true,
-        },
-        mobileNumber: {
+        highestScore: {
             type: Number,
             require : true,
         },
-        userRole: {
+        city: {
             type: String,
             require : true,
         },
@@ -46,7 +38,7 @@ function usermanagement(connection, gConfig) {
         status: {
             type: String,
             require : true,
-            default: 'Pending'
+            default: 'Active'
         },
         updatedBy: {
             type: String,
@@ -61,15 +53,15 @@ function usermanagement(connection, gConfig) {
         userId: {
             type: Schema.Types.ObjectId,
             require : true,
-            ref: 'usermanagement'
+            ref: 'players'
         },
-        subscribedTeamID: {
+        teamID: {
             type: Schema.Types.ObjectId,
             require : true,
             ref: 'teams'
         },
     });
-    gConfig.usermanagement = connection.model('usermanagement', usermanagement);
+    gConfig.players = connection.model('players', players);
     return gConfig;
 }
-module.exports = usermanagement;
+module.exports = players;
